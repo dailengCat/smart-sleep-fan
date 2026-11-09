@@ -1,0 +1,8 @@
+node_modules/
+dist/
+miniprogram_npm/
+.DS_Store
+Thumbs.db
+_bak_*
+*_bak_*
+*.zip

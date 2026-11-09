@@ -1,0 +1,144 @@
+.head { margin-bottom: 28rpx; }
+
+.title {
+  display: block;
+  font-size: 56rpx;
+  font-weight: 500;
+  letter-spacing: -1rpx;
+  color: #f4f0e6;
+}
+
+.lead {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: #c9c2b4;
+}
+
+.track {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 88rpx;
+  border-radius: 28rpx;
+  background: #1c1b18;
+  overflow: hidden;
+}
+
+.thumb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 33.3333%;
+  height: 100%;
+  padding: 6rpx;
+  box-sizing: border-box;
+  transition: transform 0.46s cubic-bezier(0.22, 1.35, 0.36, 1);
+}
+
+.thumb-fill {
+  width: 100%;
+  height: 100%;
+  border-radius: 22rpx;
+  background: rgba(230, 211, 180, 0.22);
+}
+
+.key {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #8d867a;
+  transition: color 0.28s ease, transform 0.4s cubic-bezier(0.22, 1.25, 0.36, 1);
+}
+
+.key.on {
+  color: #f4f0e6;
+  font-weight: 500;
+}
+
+.key.press { transform: scale(0.94); }
+
+.readout { margin: 48rpx 0 28rpx; }
+
+.read-k {
+  display: block;
+  font-size: 22rpx;
+  color: #8d867a;
+}
+
+.read-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 6rpx;
+}
+
+.read-v {
+  font-size: 88rpx;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -2rpx;
+  color: #f4f0e6;
+}
+
+.read-u {
+  margin-top: 12rpx;
+  margin-left: 8rpx;
+  font-size: 32rpx;
+  color: #e6d3b4;
+}
+
+.read-s {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #8d867a;
+}
+
+.swap .read-v {
+  animation: settle 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sheet {
+  border-radius: 32rpx;
+  background: #1c1b18;
+  overflow: hidden;
+}
+
+.chart {
+  width: 100%;
+  height: 460rpx;
+  display: block;
+}
+
+.meta { margin-top: 24rpx; }
+
+.meta text,
+.note {
+  display: block;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #8d867a;
+}
+
+.clear {
+  margin-top: 36rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #d2a8a4;
+  transition: transform 0.42s cubic-bezier(0.22, 1.25, 0.36, 1);
+}
+
+.clear.press { transform: scale(0.97); }
+
+@keyframes settle {
+  from { opacity: 0.25; transform: translateY(8rpx); }
+  to { opacity: 1; transform: translateY(0); }
+}

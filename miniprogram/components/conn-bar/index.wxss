@@ -1,0 +1,40 @@
+.bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 28rpx;
+}
+
+.dot {
+  width: 10rpx;
+  height: 10rpx;
+  margin-right: 10rpx;
+  border-radius: 50%;
+  background: #d2a8a4;
+}
+
+.dot-connected { background: #b7c4ae; }
+.dot-connecting,
+.dot-reconnecting { background: #e6d3b4; }
+
+.dot.wait {
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+.text {
+  font-size: 24rpx;
+  color: #c9c2b4;
+}
+
+.detail {
+  display: block;
+  margin: -16rpx 0 28rpx;
+  font-size: 24rpx;
+  line-height: 1.45;
+  color: #d2a8a4;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}

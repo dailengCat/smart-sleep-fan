@@ -1,0 +1,32 @@
+page {
+  min-height: 100%;
+  background: #12110e;
+  color: #f4f0e6;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 30rpx;
+  line-height: 1.45;
+  overflow-x: hidden;
+  --ink: #f4f0e6;
+  --muted: #8d867a;
+  --moon: #e6d3b4;
+  --surface: #1c1b18;
+  --spring: cubic-bezier(0.22, 1.28, 0.36, 1);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page {
+  box-sizing: border-box;
+  padding: 12rpx 40rpx calc(160rpx + env(safe-area-inset-bottom));
+  opacity: 0;
+  transform: translateY(18rpx);
+}
+
+.page.in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.64s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.press {
+  transform: scale(0.96);
+}

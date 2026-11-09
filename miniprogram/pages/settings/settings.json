@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "设置",
+  "backgroundColor": "#12110e",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "conn-bar": "/components/conn-bar/index"
+  }
+}

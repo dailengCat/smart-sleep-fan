@@ -1,0 +1,5 @@
+<view class="bar">
+  <view class="dot dot-{{connStatus}} {{connStatus === 'connected' ? '' : 'wait'}}"></view>
+  <text class="text">{{connText}}</text>
+</view>
+<text class="detail" wx:if="{{connDetail}}">{{connDetail}}</text>

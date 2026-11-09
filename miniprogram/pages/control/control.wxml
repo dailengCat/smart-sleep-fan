@@ -1,0 +1,67 @@
+<view class="page {{entered ? 'in' : ''}}">
+  <view class="head">
+    <text class="title">风量</text>
+    <text class="lead">发给风扇的意愿。固件还没在听，所以它不会真的转。</text>
+  </view>
+
+  <conn-bar />
+
+  <view class="now" wx:if="{{hasDevice}}">
+    <text class="now-k">设备此刻</text>
+    <text class="now-v">{{deviceLevel}} · {{deviceAuto}}</text>
+    <text class="now-s">{{deviceReason}}</text>
+  </view>
+  <text class="lead quiet" wx:else>还没有上报。下面的高亮只表示这只手机发出过指令。</text>
+
+  <view class="block">
+    <text class="label">档位</text>
+    <view class="track">
+      <view wx:if="{{sentLevel !== null}}" class="thumb" style="transform: translateX({{sentLevel * 100}}%);">
+        <view class="thumb-fill"></view>
+      </view>
+      <view
+        class="key {{sentLevel === item ? 'on' : ''}}"
+        wx:for="{{levels}}"
+        wx:key="*this"
+        data-level="{{item}}"
+        hover-class="press"
+        hover-stay-time="70"
+        hover-start-time="0"
+        bindtap="onLevel"
+      >{{item === 0 ? '关' : item}}</view>
+    </view>
+    <text class="hint">0 是关闭，1 到 5 是档位。滑块停在刚发出的那一档。</text>
+  </view>
+
+  <view class="block">
+    <text class="label">自动</text>
+    <view class="track two">
+      <view wx:if="{{sentAuto}}" class="thumb half {{sentAuto === 'on' ? 'right' : ''}}">
+        <view class="thumb-fill"></view>
+      </view>
+      <view class="key {{sentAuto === 'off' ? 'on' : ''}}" data-mode="off" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onAuto">关闭</view>
+      <view class="key {{sentAuto === 'on' ? 'on' : ''}}" data-mode="on" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onAuto">开启</view>
+    </view>
+    <text class="hint">开关只代表刚发出的指令，不是设备已经切过去。</text>
+  </view>
+
+  <view class="block">
+    <text class="label">摇头</text>
+    <view class="pair">
+      <view class="text-btn" data-action="toggle" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onOsc">开 / 关</view>
+      <view class="text-btn" data-action="step" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onOsc">点动</view>
+    </view>
+    <text class="hint">上报里没有摇头字段，这里看不到它真实开没开。</text>
+  </view>
+
+  <view class="block">
+    <text class="label">报文 · {{cmdTopic}}</text>
+    <text class="payload" user-select="{{true}}" wx:if="{{lastPayload}}">{{lastPayload}}</text>
+    <text class="hint" wx:else>点一下档位或摇头，这里会出现交给 Broker 的 JSON。</text>
+    <view class="log" wx:for="{{logs}}" wx:key="id">
+      <text class="log-time">{{item.time}} · {{item.ok ? '已发布' : '未发出'}}</text>
+      <text class="log-body" user-select="{{true}}">{{item.payload}}</text>
+      <text class="log-note">{{item.note}}</text>
+    </view>
+  </view>
+</view>

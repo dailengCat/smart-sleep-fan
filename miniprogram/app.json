@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/control/control",
+    "pages/trend/trend",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#12110e",
+    "navigationBarTitleText": "睡眠风扇",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#12110e",
+    "backgroundColorTop": "#12110e",
+    "backgroundColorBottom": "#12110e",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8d867a",
+    "selectedColor": "#e6d3b4",
+    "backgroundColor": "#12110e",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "监控" },
+      { "pagePath": "pages/control/control", "text": "控制" },
+      { "pagePath": "pages/trend/trend", "text": "趋势" },
+      { "pagePath": "pages/settings/settings", "text": "设置" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

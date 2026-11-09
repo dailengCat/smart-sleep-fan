@@ -1,0 +1,145 @@
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  height: calc(112rpx + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+  background: rgba(18, 17, 14, 0.94);
+  border-top: 1rpx solid rgba(244, 240, 230, 0.06);
+}
+
+.indicator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 25%;
+  height: 112rpx;
+  transition: transform 0.48s cubic-bezier(0.22, 1.32, 0.36, 1);
+}
+
+.indicator-fill {
+  width: 96rpx;
+  height: 64rpx;
+  margin: 24rpx auto 0;
+  border-radius: 32rpx;
+  background: rgba(230, 211, 180, 0.14);
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 112rpx;
+  transition: transform 0.36s cubic-bezier(0.22, 1.25, 0.36, 1);
+}
+
+.tab.press { transform: scale(0.9); }
+
+.label {
+  margin-top: 6rpx;
+  font-size: 20rpx;
+  color: #8d867a;
+}
+
+.tab.on .label { color: #e6d3b4; }
+
+.mark {
+  position: relative;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.live {
+  position: absolute;
+  top: -4rpx;
+  right: -8rpx;
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 50%;
+  background: #e6d3b4;
+}
+
+.live-connected { background: #b7c4ae; }
+.live-disconnected { background: #d2a8a4; }
+
+.mark-monitor {
+  border: 2rpx solid #8d867a;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.mark-monitor::after {
+  content: "";
+  position: absolute;
+  left: 9rpx;
+  top: 9rpx;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background: #8d867a;
+}
+
+.tab.on .mark-monitor { border-color: #e6d3b4; }
+.tab.on .mark-monitor::after { background: #e6d3b4; }
+
+.mark-control::before,
+.mark-trend::before {
+  content: "";
+  position: absolute;
+  background: #8d867a;
+  border-radius: 2rpx;
+}
+
+.mark-control::before {
+  left: 2rpx;
+  right: 2rpx;
+  top: 6rpx;
+  height: 2rpx;
+  box-shadow: 0 8rpx 0 #8d867a, 0 16rpx 0 #8d867a;
+}
+
+.tab.on .mark-control::before {
+  background: #e6d3b4;
+  box-shadow: 0 8rpx 0 #e6d3b4, 0 16rpx 0 #e6d3b4;
+}
+
+.mark-trend::before {
+  left: 4rpx;
+  bottom: 4rpx;
+  width: 18rpx;
+  height: 2rpx;
+  transform: rotate(-32deg);
+  transform-origin: left center;
+}
+
+.tab.on .mark-trend::before { background: #e6d3b4; }
+
+.mark-settings::before,
+.mark-settings::after {
+  content: "";
+  position: absolute;
+  left: 2rpx;
+  right: 2rpx;
+  height: 2rpx;
+  border-radius: 2rpx;
+  background: #8d867a;
+}
+
+.mark-settings::before { top: 8rpx; }
+.mark-settings::after {
+  top: 16rpx;
+  right: auto;
+  width: 14rpx;
+}
+
+.tab.on .mark-settings::before,
+.tab.on .mark-settings::after { background: #e6d3b4; }

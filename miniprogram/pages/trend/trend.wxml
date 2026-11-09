@@ -1,0 +1,38 @@
+<view class="page {{entered ? 'in' : ''}}">
+  <view class="head">
+    <text class="title">这一阵</text>
+    <text class="lead">温度、湿度和档位只留在这台手机上。</text>
+  </view>
+
+  <conn-bar />
+
+  <view class="track">
+    <view class="thumb" style="transform: translateX({{metricIndex * 100}}%);">
+      <view class="thumb-fill"></view>
+    </view>
+    <view class="key {{metric === 'temperature' ? 'on' : ''}}" data-metric="temperature" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onMetric">温度</view>
+    <view class="key {{metric === 'humidity' ? 'on' : ''}}" data-metric="humidity" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onMetric">湿度</view>
+    <view class="key {{metric === 'fan_level' ? 'on' : ''}}" data-metric="fan_level" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onMetric">档位</view>
+  </view>
+
+  <view class="readout {{swap ? 'swap' : ''}}">
+    <text class="read-k">最新</text>
+    <view class="read-row">
+      <text class="read-v">{{latest}}</text>
+      <text class="read-u" wx:if="{{latest !== '--'}}">{{unit}}</text>
+    </view>
+    <text class="read-s">最低 {{minText}} · 最高 {{maxText}}</text>
+  </view>
+
+  <view class="sheet">
+    <canvas type="2d" id="trendCanvas" class="chart" disable-scroll="{{true}}"></canvas>
+  </view>
+
+  <view class="meta">
+    <text>{{spanText}}</text>
+    <text>{{count}} 个点，其中 {{validCount}} 个能画出来</text>
+    <text class="note">{{note}}</text>
+  </view>
+
+  <view class="clear" hover-class="press" hover-stay-time="70" hover-start-time="0" bindtap="onClear">清空这台手机上的曲线</view>
+</view>

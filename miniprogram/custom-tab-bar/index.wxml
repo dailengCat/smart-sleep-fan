@@ -1,0 +1,20 @@
+<view class="tabbar">
+  <view class="indicator" style="transform: translateX({{selected * 100}}%);">
+    <view class="indicator-fill"></view>
+  </view>
+  <view
+    class="tab {{selected === index ? 'on' : ''}}"
+    wx:for="{{list}}"
+    wx:key="pagePath"
+    data-index="{{index}}"
+    hover-class="press"
+    hover-stay-time="60"
+    hover-start-time="0"
+    bindtap="onSwitch"
+  >
+    <view class="mark mark-{{item.icon}}">
+      <view class="live live-{{connStatus}}" wx:if="{{index === 0}}"></view>
+    </view>
+    <text class="label">{{item.text}}</text>
+  </view>
+</view>

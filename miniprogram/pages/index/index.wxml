@@ -1,0 +1,98 @@
+<view class="page {{entered ? 'in' : ''}}">
+  <view class="mast">
+    <view class="brand-block">
+      <text class="brand">睡眠风扇</text>
+      <text class="brand-line">陪你入睡的风</text>
+    </view>
+    <view class="link">
+      <view class="dot dot-{{connStatus}} {{connStatus === 'connected' ? '' : 'wait'}}"></view>
+      <text class="link-text">{{connText}}</text>
+    </view>
+  </view>
+  <text class="device" user-select="{{true}}">{{deviceId || '还没有设备'}}</text>
+  <text class="detail" wx:if="{{connDetail}}">{{connDetail}}</text>
+
+  <view class="night {{fresh ? 'fresh' : ''}}">
+    <view class="halo {{fanRunning ? 'alive' : 'still'}}"></view>
+
+    <block wx:if="{{hasData}}">
+      <text class="eyebrow">室温</text>
+      <view class="clock-row {{sensorFault ? 'dim' : ''}}">
+        <text class="clock">{{tempText}}</text>
+        <text class="degree" wx:if="{{tempText !== '--'}}">°</text>
+      </view>
+      <text class="beside">湿度 {{humText}}<text wx:if="{{humText !== '--'}}">%</text></text>
+      <text class="fault" wx:if="{{sensorFault}}">传感器异常。上面仍是这一帧的原始读数。</text>
+
+      <view class="facts">
+        <view class="fact">
+          <text class="fact-k">雷达</text>
+          <text class="fact-v">{{presenceText}}</text>
+          <text class="fact-s {{radarTone === 'offline' ? 'clay' : ''}}">{{distanceText}}<text wx:if="{{distanceText !== '--'}}"> cm</text> · {{radarOnlineText}}</text>
+        </view>
+        <view class="fact">
+          <text class="fact-k">睡眠</text>
+          <text class="fact-v tone-{{sleepTone}}">{{sleepLabel}}</text>
+          <text class="fact-s">{{sleepRaw}}{{sleepRaw && sleepingText ? ' · ' : ''}}{{sleepingText}}</text>
+        </view>
+        <view class="fact">
+          <text class="fact-k">风扇</text>
+          <text class="fact-v">{{fanLabel}}</text>
+          <text class="fact-s">{{autoText}}</text>
+        </view>
+      </view>
+
+      <view class="why">
+        <text class="why-k">决策</text>
+        <text class="why-v">{{reason}}</text>
+        <text class="why-s" wx:if="{{decisionExtra}}">{{decisionExtra}}</text>
+      </view>
+
+      <view class="fan">
+        <view class="medallion">
+          <view class="rotor {{fanRunning ? 'alive' : ''}}">
+            <view class="blade"></view>
+            <view class="blade b2"></view>
+            <view class="blade b3"></view>
+            <view class="hub"></view>
+          </view>
+        </view>
+        <view class="fan-copy">
+          <text class="fan-now">{{fanCustom ? '自定义输出' : fanLabel}}</text>
+          <text class="fan-duty">占空比 {{dutyText}}%</text>
+          <view class="duty" wx:if="{{fanCustom}}">
+            <view class="duty-fill" style="width: {{dutyWidth}}%;"></view>
+          </view>
+        </view>
+      </view>
+
+      <view class="air">
+        <text class="air-k">空气</text>
+        <text class="air-v">{{mqText}}</text>
+        <text class="air-s">MQ135 原始值，未校准</text>
+      </view>
+
+      <text class="stale" wx:if="{{stale}}">已超过 30 秒没有新报文</text>
+    </block>
+
+    <block wx:else>
+      <text class="eyebrow">室温</text>
+      <view class="clock-row dim">
+        <text class="clock">—</text>
+      </view>
+      <text class="wait">{{emptyTitle}}</text>
+      <text class="wait-sub" wx:if="{{emptyTitle !== '等待设备上报…'}}">等待设备上报…</text>
+      <text class="wait-sub">{{emptySub}}</text>
+    </block>
+  </view>
+
+  <view class="foot">
+    <text wx:if="{{hasData && updatedText}}">{{updatedText}} · {{agoText}}</text>
+    <text wx:if="{{uptimeText}}">设备已运行 {{uptimeText}}</text>
+    <text wx:if="{{receivedText}}">{{receivedText}}</text>
+    <text class="ignore" wx:if="{{ignoredText}}">{{ignoredText}}</text>
+    <text>{{brokerText}} · {{topicText}}</text>
+    <text wx:if="{{filterText}}">只看 {{filterText}}</text>
+    <text>下拉重新连接</text>
+  </view>
+</view>

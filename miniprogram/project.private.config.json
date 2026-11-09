@@ -1,0 +1,25 @@
+{
+  "description": "本机私有配置。urlCheck 为 false 时，开发者工具不校验 socket 合法域名。",
+  "projectname": "sleepfan",
+  "setting": {
+    "urlCheck": false,
+    "compileHotReLoad": true,
+    "coverView": true,
+    "lazyloadPlaceholderEnable": false,
+    "skylineRenderEnable": false,
+    "preloadBackgroundData": false,
+    "autoAudits": false,
+    "useApiHook": true,
+    "showShadowRootInWxmlPanel": true,
+    "bigPackageSizeSupport": false,
+    "useStaticServer": false,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "useGlassEaselForWxml": false,
+    "checkInvalidKey": true,
+    "ignoreDevUnusedFiles": true,
+    "useIsolateContext": true
+  },
+  "libVersion": "3.18.0",
+  "condition": {}
+}
